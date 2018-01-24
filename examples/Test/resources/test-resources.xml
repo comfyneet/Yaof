@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<Resources>
+  <Resource type="Image" id="ImageAwesomeFace" scope="0" filePath="resources/awesomeface.png" />
+  <Resource type="Image" id="ImageContainer" scope="0" filePath="resources/container.jpg" />
+</Resources>

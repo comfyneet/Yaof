@@ -1,0 +1,45 @@
+# - Try to find the TINYXML2 library
+# Once done this will define
+#
+#  TINYXML2_FOUND - system has TINYXML2
+#  TINYXML2_INCLUDE_DIR - the TINYXML2 include directory
+#  TINYXML2_SOURCES - the TINYXML2 source files
+
+FIND_PATH(TINYXML2_INCLUDE_DIR tinyxml2.h
+   ${PROJECT_SOURCE_DIR}/extlibs/include/tinyxml2
+   /usr/include
+   /usr/local/include
+   ${LIBIGL_INCLUDE_DIR}/../external/tinyxml2/
+   ${PROJECT_SOURCE_DIR}/../libigl/external/tinyxml2/
+   ${PROJECT_SOURCE_DIR}/../../external/tinyxml2/
+   ${PROJECT_SOURCE_DIR}/../external/tinyxml2/
+   ${PROJECT_SOURCE_DIR}/external/tinyxml2/
+)
+
+SET(TINYXML2_LIBRARY_SEARCH_DIRS
+    ${PROJECT_SOURCE_DIR}/extlibs/libs-msvc/${ARCHITECTURE}
+    ${TINYXML2_LIBRARY_SEARCH_DIRS}
+    ${CMAKE_LIBRARY_PATH}
+    /usr/lib
+    /usr/local/lib
+    /opt/lib
+    /opt/freeimage/lib
+)
+
+FIND_LIBRARY(TINYXML2_LIBRARIES tinyxml2 PATHS ${TINYXML2_LIBRARY_SEARCH_DIRS})
+
+SET(TINYXML2_FOUND "NO")
+IF (TINYXML2_INCLUDE_DIR)
+    SET(TINYXML2_FOUND "YES")
+ENDIF (TINYXML2_INCLUDE_DIR)
+
+#set(TINYXML2_SOURCES ${TINYXML2_INCLUDE_DIR}/tinyxml2.cpp)
+
+if(TINYXML2_INCLUDE_DIR AND TINYXML2_LIBRARIES)
+   message(STATUS "Found TINYXML2: ${TINYXML2_INCLUDE_DIR}")
+elseif (NOT TINYXML2_FIND_QUIETLY)
+    message(FATAL_ERROR "could NOT find TINYXML2")
+endif()
+
+#MARK_AS_ADVANCED(TINYXML2_INCLUDE_DIR TINYXML2_LIBRARIES TINYXML2_SOURCES)
+MARK_AS_ADVANCED(TINYXML2_INCLUDE_DIR TINYXML2_LIBRARIES TINYXML2_LIBRARY_DIRS)
