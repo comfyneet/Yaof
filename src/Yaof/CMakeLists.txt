@@ -34,7 +34,7 @@ file(GLOB YAOF_SOURCES
         "Misc/*.cpp"
         "Window/*.cpp")
 
-add_library(Yaof ${YAOF_SOURCES})
+add_library(Yaof SHARED ${YAOF_SOURCES})
 
 target_link_libraries(Yaof ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES} ${GLFW_LIBRARIES} ${FreeImage_LIBRARIES} ${TINYXML2_LIBRARIES})
 
